@@ -1,0 +1,27 @@
+{
+  "name": "api_rest_my_indoor",
+  "version": "1.0.0",
+  "description": "api rest with nodejs and express",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrancoDavid/api-rest-admin-crop.git"
+  },
+  "author": "Franco David",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrancoDavid/api-rest-admin-crop/issues"
+  },
+  "homepage": "https://github.com/FrancoDavid/api-rest-admin-crop#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
