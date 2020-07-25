@@ -14,13 +14,11 @@ exports.index = (request, response) => {
     });
 }
 
-exports.view = (request, response) => {
-    LOG('exe by id');
+exports.viewByInstance = (request, response) => {
+    LOG('exe by instance');
     Plantation.find(request.query, (err, plantation, next) => {
-        LOG(err);
         if  (err) {
             response.status(500).json({ message: 'error! in the searching' });
-            next();
         }
         response.status(200).json({
             message: 'Plantation details loaded',
@@ -29,26 +27,43 @@ exports.view = (request, response) => {
     })
 };
 
-exports.new = function (req, res) {
+exports.new = function (request, response) {
     LOG('exe create plantation');
-    var plantation = new Plantation();
-    plantation.name = req.body.name;
-    plantation.date_create = req.body.date_create;
-    plantation.date_init = req.body.date_init;
-    plantation.description = req.body.description;
-    plantation.width = req.body.width;
-    plantation.heigth = req.body.heigth;
-    plantation.depth = req.body.depth;
-    plantation.instance_id = req.body.instance_id;
+    const plantation = new Plantation();
+    plantation.name = request.body.name;
+    plantation.date_create = request.body.date_create;
+    plantation.date_init = request.body.date_init;
+    plantation.description = request.body.description;
+    plantation.width = request.body.width;
+    plantation.heigth = request.body.heigth;
+    plantation.depth = request.body.depth;
+    plantation.instance_id = request.body.instance_id;
     
     plantation.save(function (err) {
-        // Check for validation error
         if (err)
-            res.json(err);
+            response.status(500).json(err);
         else
-            res.json({
+            response.status(200).json({
                 message: 'New plantation created!',
                 data: plantation
             });
     });
 };
+
+exports.view = (request, response) => {
+    LOG('exe by _id');
+    LOG(request.query);
+    Plantation.findByI(request.query, (err, plantation) => {
+        if  (err) {
+            response.status(500).json({ message: 'error! in the searching' });
+        }
+        response.status(200).json({
+            message: 'Plantation details loaded',
+            data: plantation
+        });
+    })
+};
+
+
+
+

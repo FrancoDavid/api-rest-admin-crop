@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const LOG = require('debug')('app');
 
 const plantation_squema = mongoose.Schema({
+    _id:    {
+        type: String
+    },
     name:   {
         type: String,
         required:   true
