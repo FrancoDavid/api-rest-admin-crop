@@ -4,8 +4,7 @@
   "description": "api rest with nodejs and express",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
-    "start:debug": "DEBUG=app nodemon index"
+    "start": "DEBUG=app nodemon index"
   },
   "repository": {
     "type": "git",

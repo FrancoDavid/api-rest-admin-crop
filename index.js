@@ -11,14 +11,13 @@ app.use(bodyParser.urlencoded({extended:    true}));
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/control_cultivo', {useNewUrlParser:   true, useUnifiedTopology: true});
+const db = mongoose.connection;
 
-// const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:')); // enlaza el track de error a la consola (proceso actual)
+db.once('open', () => {
+  console.log('connected'); // si esta todo ok, imprime esto
+});
 
-// if (!db) {
-//     console.error('Not connect db, reset connection');
-// } else {
-//     console.log('Connect stablesh');
-// }
 app.get('/', (req, res) => res.send('Hello World with Express'));
 app.use('/api', router_plantation);
 

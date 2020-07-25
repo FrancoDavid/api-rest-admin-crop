@@ -28,10 +28,7 @@ const plantation_squema = mongoose.Schema({
     instance_id:    {
         type:   Number,
         required:   true
-    },
-    _id: {
-        type: String
-    } 
+    }
 });
 
 const Plantation = module.exports =  mongoose.model('plantation', plantation_squema);
