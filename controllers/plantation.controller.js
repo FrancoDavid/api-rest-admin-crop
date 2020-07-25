@@ -5,23 +5,25 @@ exports.index = (request, response) => {
     LOG('exe index');
     Plantation.get((err, plantations) => {
         if (err)
-            response.send(err);
+            response.status(500).json({message: 'error! in query'});
 
-        response.json({
-            message: 'OK',
+        response.status(200).json({
+            message: 'Plantations loaded',
             data: plantations
         });
     });
 }
 
 exports.view = (request, response) => {
-    LOG('exe by instance_id');
-    Plantation.findById(request.params._id, (err, plantation) => {
-        if  (err) 
-            response.send(err);
-
-        response.json({
-            message: 'Ok',
+    LOG('exe by id');
+    Plantation.find(request.query, (err, plantation, next) => {
+        LOG(err);
+        if  (err) {
+            response.status(500).json({ message: 'error! in the searching' });
+            next();
+        }
+        response.status(200).json({
+            message: 'Plantation details loaded',
             data: plantation
         });
     })

@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const plantationController = require('../controllers/plantation.controller');
 
-router.route('/plantation')
+router.route('/getting')
     .get(plantationController.index)
     .post(plantationController.new);
 
-router.route('/plantation/:instance_id')
+router.route('/setting')
     .get(plantationController.view);
 
 module.exports = router;
