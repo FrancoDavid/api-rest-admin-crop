@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const LOG = require('debug')('app');
 
 const plantation_squema = mongoose.Schema({
     name:   {
@@ -6,12 +7,10 @@ const plantation_squema = mongoose.Schema({
         required:   true
     },
     date_create:    {
-        type:   Date,
-        default:    Date.now
+        type:   String,
     },
     date_init:  {
-        type:  Date,
-        default:    Date.now,
+        type:  String,
         required:   true
     },
     description:    {
@@ -29,12 +28,14 @@ const plantation_squema = mongoose.Schema({
     instance_id:    {
         type:   Number,
         required:   true
-    }
+    },
+    _id: {
+        type: String
+    } 
 });
 
+const Plantation = module.exports =  mongoose.model('plantation', plantation_squema);
 
-const Plantation = module.exports = mongoose.model('plantation', plantation_squema);
-
-// module.exports.get = (callback, limit) => {
-//     Plantation.find(callback).limit(limit);
-// }
+module.exports.get = function (callback, limit) {
+    Plantation.find(callback).limit(limit);
+}

@@ -4,7 +4,8 @@
   "description": "api rest with nodejs and express",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index"
+    "start": "nodemon index",
+    "start:debug": "DEBUG=app nodemon index"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "mongoose": "^5.9.25"
   },
   "devDependencies": {
+    "debug": "^4.1.1",
     "nodemon": "^2.0.4"
   }
 }

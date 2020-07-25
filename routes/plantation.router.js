@@ -1,12 +1,6 @@
 const router = require('express').Router();
 const plantationController = require('../controllers/plantation.controller');
 
-// router.get('/plantation', (request, response) => {
-//     response.json({
-//         status: 'running get'
-//     });
-// });
-
 router.route('/plantation')
     .get(plantationController.index);
 
