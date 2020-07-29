@@ -5,10 +5,12 @@ router.route('/plantations')
     .get(plantationController.index);
 
 router.route('/plantationsinstance')
-    .get(plantationController.viewByInstance)
+    .get(plantationController.viewByInstance);
 
 router.route('/plantation')
     .get(plantationController.view)
-    .post(plantationController.new);
+    .post(plantationController.new)
+    .put(plantationController.update)
+    .delete(plantationController.delete);
 
 module.exports = router;
