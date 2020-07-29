@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const LOG = require('debug')('app');
 const router_plantation = require('./routes/plantation.router');
-
+const router_plant = require('./routes/plant.router');
+const router = require('express').Router();
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -18,8 +19,20 @@ db.once('open', () => {
   console.log('connected'); // si esta todo ok, imprime esto
 });
 
+
+// route middleware that will happen on every request
+router.use(function(req, res, next) {
+
+  // log each request to the console
+  console.log(req.method, req.url);
+
+  // continue doing what we were doing and go to the route
+  next(); 
+});
+
 app.get('/', (req, res) => res.send('Hello World with Express'));
-app.use('/api', router_plantation);
+app.use('/plantation',  router_plantation);
+app.use('/plant', router_plant);
 
 app.listen(port, () => console.log('Running with nodemon',   port));
 

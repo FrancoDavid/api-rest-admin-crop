@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const plantationController = require('../controllers/plantation.controller');
 
+
 router.route('/plantations')
     .get(plantationController.index);
 
