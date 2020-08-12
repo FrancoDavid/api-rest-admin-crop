@@ -29,27 +29,27 @@ exports.viewByPlantation = (request, response) => {
 
 exports.new = (request, response) =>    {
     LOG('exe create Plant');
-    const Plant = new Plant();
+    const plant = new Plant();
 
-    Plant.nick_name = request.body.nick_name;
-    Plant.name_kind = request.body.name_kind;
-    Plant.type_origin = request.body.type;
-    Plant.photo = request.body.photo;
-    Plant.width = request.body.width;
-    Plant.heigth = request.body.heigth;
-    Plant.kind_plant = request.body.kind_plant;
-    Plant.sex = request.body.sex;
-    Plant.circle_life = request.body.circle_life;
-    Plant.plantation_id = request.body.plantation_id;
-    Plant.instance_id = request.body.instance_id;
-    
-    Plant.save((err) => {
+    plant.nick_name = request.body.nick_name;
+    plant.name_kind = request.body.name_kind;
+    plant.type_origin = request.body.type_origin;
+    plant.photo = request.body.photo;
+    plant.width = request.body.width;
+    plant.heigth = request.body.heigth;
+    plant.kind_plant = request.body.kind_plant;
+    plant.sex = request.body.sex;
+    plant.cyrcle_life = request.body.cyrcle_life;
+    plant.plantation_id = request.body.plantation_id;
+    plant.instance_id = request.body.instance_id;
+        
+    plant.save((err) => {
         if (err) {
             response.status(500).json({ error: err, message:'Plant not create'});
         } else {
             response.status(200).json({
                 message: 'New Plant created!',
-                data: Plant
+                data: plant
             });
         }
             
@@ -75,19 +75,20 @@ exports.update = (request, response)    =>   {
         if (err) {
             response.status(500).json({error:   err,    message:    'Plant not update'});
         }
+        LOG(plant);
         plant.nick_name = request.body.nick_name;
         plant.name_kind = request.body.name_kind;
-        plant.type_origin = request.body.type;
+        plant.type_origin = request.body.type_origin;
         plant.photo = request.body.photo;
         plant.width = request.body.width;
         plant.heigth = request.body.heigth;
         plant.kind_plant = request.body.kind_plant;
         plant.sex = request.body.sex;
-        plant.circle_life = request.body.circle_life;
+        plant.cyrcle_life = request.body.cyrcle_life;
         plant.plantation_id = request.body.plantation_id;
         plant.instance_id = request.body.instance_id;
 
-        Plant.save((err)   => {
+        plant.save((err)   => {
             if (err)
                 response.status(500).json({error: err, message: 'Plant not update'});
             

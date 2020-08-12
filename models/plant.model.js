@@ -29,7 +29,7 @@ const plant_squema = mongoose.Schema({
         type:   Number,
         required:   true
     },
-    circle_life:  {
+    cyrcle_life:  {
         type:   Number,
         required:   true
     },
