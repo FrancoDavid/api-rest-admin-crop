@@ -45,6 +45,6 @@ const plant_squema = mongoose.Schema({
 
 const Plant = module.exports =  mongoose.model('plant', plant_squema);
 
-module.exports.get = function (callback, limit) {
+module.exports.get = (callback, limit) => {
     Plant.find(callback).limit(limit);
 }

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const LOG = require('debug')('app');
 const router_plantation = require('./routes/plantation.router');
 const router_plant = require('./routes/plant.router');
-const router = require('express').Router();
+const router_tool = require('./routes/tool.router');
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -19,21 +19,12 @@ db.once('open', () => {
   console.log('connected'); // si esta todo ok, imprime esto
 });
 
-
-// // route middleware that will happen on every request
-// router.use(function(req, res, next) {
-
-//   // log each request to the console
-//   console.log(req.method, req.url);
-
-//   // continue doing what we were doing and go to the route
-//   next(); 
-// });
-
 app.get('/', (req, res) => res.send('Hello World with Express'));
 
 app.use('/api/plantation', router_plantation);
 app.use('/api/plant', router_plant);
+app.use('/api/tool', router_tool);
+
 
 app.listen(port, () => console.log('Running with nodemon',   port));
 
