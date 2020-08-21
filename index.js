@@ -7,6 +7,7 @@ const routerPlant = require('./routes/plant.router');
 const routerTool = require('./routes/tool.router');
 const routerTemperature = require('./routes/temperature.router');
 const routerIrrigation = require('./routes/irrigation.router');
+const routerFertilizer = require('./routes/fertilizer.router');
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -26,8 +27,9 @@ app.get('/', (req, res) => res.send('Hello World with Express'));
 app.use('/api/plantation', routerPlantation);
 app.use('/api/plant', routerPlant);
 app.use('/api/tool', routerTool);
-app.use('api/temperature', routerTemperature);
-app.use('api/irrigation', routerIrrigation)
+app.use('/api/temperature', routerTemperature);
+app.use('/api/irrigation', routerIrrigation);
+app.use('/api/fertilizer', routerFertilizer);
 
 
 app.listen(port, () => console.log('Running with nodemon',   port));
