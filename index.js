@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const LOG = require('debug')('app');
-const router_plantation = require('./routes/plantation.router');
-const router_plant = require('./routes/plant.router');
-const router_tool = require('./routes/tool.router');
-const router_temperature = require('./routes/temperature.router')
+const routerPlantation = require('./routes/plantation.router');
+const routerPlant = require('./routes/plant.router');
+const routerTool = require('./routes/tool.router');
+const routerTemperature = require('./routes/temperature.router');
+const routerIrrigation = require('./routes/irrigation.router');
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -22,10 +23,11 @@ db.once('open', () => {
 
 app.get('/', (req, res) => res.send('Hello World with Express'));
 
-app.use('/api/plantation', router_plantation);
-app.use('/api/plant', router_plant);
-app.use('/api/tool', router_tool);
-app.use('api/temperature', router_temperature);
+app.use('/api/plantation', routerPlantation);
+app.use('/api/plant', routerPlant);
+app.use('/api/tool', routerTool);
+app.use('api/temperature', routerTemperature);
+app.use('api/irrigation', routerIrrigation)
 
 
 app.listen(port, () => console.log('Running with nodemon',   port));
