@@ -40,3 +40,4 @@ app.use('/api/notification', routerNotification);
 app.listen(port, () => console.log('Running with nodemon',   port));
 
 module.exports = mongoose;
+module.exports = app;

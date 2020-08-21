@@ -4,7 +4,8 @@
   "description": "api rest with nodejs and express",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=app nodemon index"
+    "start": "DEBUG=app nodemon index",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,10 @@
   "homepage": "https://github.com/FrancoDavid/api-rest-admin-crop#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "express": "^4.17.1",
+    "mocha": "^8.1.1",
     "mongoose": "^5.9.25"
   },
   "devDependencies": {
